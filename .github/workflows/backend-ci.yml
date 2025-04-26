@@ -40,6 +40,6 @@ jobs:
     # --- PASO PARA PRUEBAS (Cuando estén) ---
     - name: Run Tests (Pytest)
       run: |
-        pytest # ASUNCIÓN: Tienes pytest configurado y tus tests son descubribles
+        pytest
       # Por ahora, si no hay tests, pytest pasará sin encontrar ninguno.
       # Cuando agregues tests, este comando los ejecutará.
