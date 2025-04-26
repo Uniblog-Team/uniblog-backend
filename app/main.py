@@ -20,6 +20,7 @@ app = FastAPI(
 #     allow_headers=["Authorization", "Content-Type"]
 # )
 
+
 @app.get("/")
 def read_root():
     return {"message": "API de UniBlog está funcionando"}
