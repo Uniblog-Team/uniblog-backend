@@ -2,9 +2,7 @@ from fastapi import FastAPI
 
 
 app = FastAPI(
-    title="UniBlog Backend",
-    description="API Backend para UniBlog",
-    version="0.1.0"
+    title="UniBlog Backend", description="API Backend para UniBlog", version="0.1.0"
 )
 
 # Configuración básica de CORS
