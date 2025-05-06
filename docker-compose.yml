@@ -1,0 +1,32 @@
+# docker-compose.yml
+services:
+  backend:
+    build: . # Construye la imagen usando el Dockerfile en el directorio actual
+    container_name: uniblog_backend # Nombre opcional para el contenedor
+    ports:
+      - "8000:8000" # Mapea: <puerto_host>:<puerto_contenedor>
+    volumes:
+      - .:/app # Monta el código local en /app dentro del contenedor (para --reload)
+    environment:
+      # Define la variable de entorno para la conexión a la DB
+      # Usa el nombre del servicio 'db' como host
+      DATABASE_URL: postgresql://uniblog_user:uniblog_password@db:5432/uniblog_db
+      # Puedes añadir otras variables de entorno necesarias aquí
+    depends_on:
+      - db # Asegura que el servicio 'db' se inicie antes que 'backend'
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload # Sobrescribe CMD si es necesario
+
+  db:
+    image: postgres:15 # Imagen oficial de PostgreSQL (puedes elegir otra versión)
+    container_name: uniblog_db # Nombre opcional
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persiste los datos de la DB
+    ports:
+      - "5432:5432" # Opcional: Mapea puerto para conectar a la DB desde tu máquina local si lo necesitas
+
+volumes:
+  postgres_data: # Define el volumen nombrado para persistencia
