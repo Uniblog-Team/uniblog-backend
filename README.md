@@ -6,15 +6,15 @@ Backend de la plataforma Uniblog, pasos se instalación:
    - **En Linux/macOS:**  
 
       ```bash
-      python3 -m venv scp-env  
-      source scp-env/bin/activate  
+      python3 -m venv .venv
+      source .venv/bin/activate
       ```  
 
    - **En Windows:**  
 
       ```powershell
-      python -m venv scp-env  
-      scp-env\Scripts\activate  
+      python -m venv .venv
+      .venv\Scripts\activate
       ```  
 
 2. Instalar los requerimientos del proyecto  

@@ -1,0 +1,17 @@
+[tool.black]
+line-length = 88
+exclude = '''
+/(
+    \.eggs         # support files for setuptools
+  | \.git          # version control
+  | \.hg           # version control
+  | \.mypy_cache   # mypy cache
+  | \.tox          # virtualenv/test environment manager
+  | \.venv         # virtualenv
+  | _build        # sphinx documentation
+  | build         # pep 517 builds
+  | dist          # packaging
+  | alembic       # alembic migrations
+  | migrations    # other migrations
+)/
+'''
