@@ -164,3 +164,15 @@ Para aplicar cambios automáticamente:
 ```bash
 black .
 ```
+
+---
+
+## Cómo ejecutar pruebas con `pytest`
+
+Para correr todos los tests del proyecto, simplemente ejecuta:
+
+```bash
+pytest
+```
+
+Esto buscará automáticamente archivos que comiencen con `test_` o terminen en `_test.py` y ejecutará las pruebas definidas.
