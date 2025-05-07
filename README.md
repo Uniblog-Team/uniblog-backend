@@ -98,3 +98,69 @@ Para desarrollar correctamente, es necesario contar con una base de datos dispon
 > Puede que necesite aplicar el comando con `sudo`, dependiendo de su configuración.
 
 ---
+
+## Cómo ejecutar `flake8` y `black`
+
+Para asegurar la calidad y consistencia del código, se emplean las herramientas **[flake8](https://flake8.pycqa.org/)** (linter) y **[black](https://black.readthedocs.io/)** (formateador de código automático).
+
+
+### Uso básico
+
+Ejecutar en la raíz del proyecto:
+
+```bash
+flake8 .
+black --check .
+```
+
+* `flake8 .` analiza el código y reporta errores de estilo.
+* `black --check .` verifica si el código está correctamente formateado según Black (sin modificarlo).
+
+---
+
+### Exclusión de carpetas innecesarias
+
+Para evitar analizar carpetas como migraciones o entornos virtuales, configura lo siguiente:
+
+#### 📁 `.flake8`
+
+Crea un archivo `.flake8` en la raíz del proyecto con este contenido:
+
+```ini
+[flake8]
+exclude =
+    .venv,
+    venv,
+    env,
+    alembic,
+    migrations
+```
+
+#### 📁 `pyproject.toml`
+
+Crea (o edita) un archivo `pyproject.toml` con esta sección para Black:
+
+```toml
+[tool.black]
+line-length = 88
+target-version = ['py39']
+exclude = '''
+/(
+    \.venv
+  | venv
+  | env
+  | alembic
+  | migrations
+)/
+'''
+```
+
+---
+
+### Formatear automáticamente con Black
+
+Para aplicar cambios automáticamente:
+
+```bash
+black .
+```
