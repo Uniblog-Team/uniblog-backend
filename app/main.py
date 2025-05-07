@@ -1,10 +1,8 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(
-    title="UniBlog Backend",
-    description="API Backend para UniBlog",
-    version="0.1.0"
+    title="UniBlog Backend", description="API Backend para UniBlog", version="0.1.0"
 )
 
 # Configuración básica de CORS
@@ -19,6 +17,7 @@ app = FastAPI(
 #     allow_methods=["GET", "POST", "PUT", "DELETE"],
 #     allow_headers=["Authorization", "Content-Type"]
 # )
+
 
 @app.get("/")
 def read_root():
